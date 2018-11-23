@@ -18,7 +18,9 @@ export const initialState = fromJS({
 	featuredEvents: [],
 	events: [],
 	loading: false,
-	error: true
+	loadingFeatured: false,
+	error: true,
+	errorFeatured: false
 });
 
 function mainPageReducer(state = initialState, action) {
