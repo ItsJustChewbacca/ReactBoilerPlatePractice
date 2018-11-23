@@ -14,6 +14,7 @@ import {
 	} from './constants';
 
 export function loadEvents(tenantId, skip, take, searchTerm) {
+	console.log('In Load Events Action', tenantId)
   return {
     type: LOAD_EVENTS,
     tenantId,

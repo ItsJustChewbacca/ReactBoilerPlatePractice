@@ -26,6 +26,7 @@ export const initialState = fromJS({
 function mainPageReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_EVENTS:
+    console.log('In Load Events reducer', action);
       return state.set('loading', true).set('error', false);
      case LOAD_EVENTS_SUCCESS:
      	return state
