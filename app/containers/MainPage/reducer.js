@@ -11,7 +11,7 @@ import {
 	LOAD_EVENTS_ERROR, 
 	LOAD_FEATURED_EVENTS,
 	LOAD_FEATURED_EVENTS_SUCCESS,
-	LOAD_FEATURED_EVENTS_ERROR 
+	LOAD_FEATURED_EVENTS_ERROR,
 	} from './constants';
 
 export const initialState = fromJS({
@@ -20,13 +20,13 @@ export const initialState = fromJS({
 	loading: false,
 	loadingFeatured: false,
 	error: true,
-	errorFeatured: false
+	errorFeatured: false,
 });
 
 function mainPageReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_EVENTS:
-    console.log('In Load Events reducer', action);
+    console.log('In Load Events reducer' + action);
       return state.set('loading', true).set('error', false);
      case LOAD_EVENTS_SUCCESS:
      	return state

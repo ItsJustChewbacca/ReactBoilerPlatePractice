@@ -22,18 +22,19 @@ import messages from './messages';
 
 /* eslint-disable react/prefer-stateless-function */
 export class MainPage extends React.Component {
-  ComponentDidMount() {
+  componentDidMount() {
     // load featured events
-    loadEvents('12121', 0, 15, '');
-    loadFeaturedEvents('12121', 0, 5)
+    this.props.loadEvents('12121', 0, 15, '');
+    this.props.loadFeaturedEvents('12121', 0, 5);
     // load events
   }
 
   render() {
-    const featuredEvents = {...this.props.featuredEvents};
-    console.log('featuredEvents', featuredEvents)
+    console.log(this.props.featuredEvents)
+    const featuredEvents = { ...this.props.featuredEvents};
+    console.log('featuredEvents' + featuredEvents)
     const events = { ...this.props.events}
-    console.log('events', events)
+    console.log('events' + events)
 
     return (
       <div>
@@ -48,20 +49,22 @@ export class MainPage extends React.Component {
 }
 
 MainPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   featuredEvents: PropTypes.array,
-  events: PropTypes.array
+  events: PropTypes.array,
+  loadEvents: PropTypes.func,
+  loadFeatureEvents: PropTypes.func, 
 };
 
 const mapStateToProps = createStructuredSelector({
+  tenant: makeTenantSelector(),
   featuredEvents: makeFeaturedEventsSelector(),
-  events: makeEventsSelector()
+  events: makeEventsSelector(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     loadEvents: (tenantId, skip, take, searchTerm) => dispatch(loadEvents(tenantId, skip, take, searchTerm)),
-    loadFeaturedEvents: (tenantId, skip, take) => dispatch(loadFeaturedEvents(tenantId, skip, take))
+    loadFeaturedEvents: (tenantId, skip, take) => dispatch(loadFeaturedEvents(tenantId, skip, take)),
   };
 }
 
