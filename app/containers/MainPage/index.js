@@ -36,10 +36,14 @@ export class MainPage extends React.Component {
 
 MainPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  featuredEvents: PropTypes.array,
+  events: PropTypes.array
 };
 
 const mapStateToProps = createStructuredSelector({
   mainPage: makeSelectMainPage(),
+  featuredEvents: '',
+  events: ''
 });
 
 function mapDispatchToProps(dispatch) {

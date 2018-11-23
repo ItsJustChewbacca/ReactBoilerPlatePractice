@@ -18,5 +18,8 @@ const selectMainPageDomain = state => state.get('mainPage', initialState);
 const makeSelectMainPage = () =>
   createSelector(selectMainPageDomain, substate => substate.toJS());
 
+const makeFeaturedEventsSelector = () => createSelector(selectMainPageDomain, substate.get('featuredEvents'))
+
+const makeEventsSelector = () => createSelector(selectMainPageDomain, substate.get('events'))
 export default makeSelectMainPage;
-export { selectMainPageDomain };
+export { selectMainPageDomain, makeFeaturedEventsSelector, makeEventsSelector };
